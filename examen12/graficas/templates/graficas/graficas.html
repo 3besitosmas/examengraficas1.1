@@ -3,75 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráficas</title>
+    <title>Seis Gráficas Vasto</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .grafica-container {
+            display: flex;
+            flex-direction: column; /* Alinear las gráficas en columnas */
+            align-items: center; /* Centrar las gráficas horizontalmente */
+            margin: 20px 0;
+        }
+        canvas {
+            margin: 20px auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Gráfica 1</h1>
-    <canvas id="grafica1"></canvas>
+    <h1>Seis Gráficas Vasto Arredondo Rodrigo</h1>
 
-    <h1>Gráfica 2</h1>
-    <canvas id="grafica2"></canvas>
+    <!-- Primera fila: 3 gráficas -->
+    <div class="grafica-container">
+        <canvas id="chart1" width="400" height="200"></canvas>
+        <canvas id="chart2" width="400" height="200"></canvas>
+        <canvas id="chart3" width="400" height="200"></canvas>
+    </div>
 
-    <h1>Gráfica 3</h1>
-    <canvas id="grafica3"></canvas>
+    <!-- Segunda fila: 3 gráficas -->
+    <div class="grafica-container">
+        <canvas id="chart4" width="400" height="200"></canvas>
+        <canvas id="chart5" width="400" height="200"></canvas>
+        <canvas id="chart6" width="400" height="200"></canvas>
+    </div>
 
     <script>
         // Gráfica 1
-        const ctx1 = document.getElementById('grafica1').getContext('2d');
+        const ctx1 = document.getElementById('chart1').getContext('2d');
         new Chart(ctx1, {
             type: 'bar',
             data: {
-                labels: {{ grafica1.etiquetas|safe }},
+                labels: {{ labels1|safe }},
                 datasets: [{
-                    label: 'Datos de la Gráfica 1',
-                    data: {{ grafica1.datos|safe }},
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    label: 'Gráfica 1',
+                    data: {{ data1|safe }},
+                    backgroundColor: 'rgba(219, 158, 145, 0.2)',
+                    borderColor: 'rgba(255, 0, 0, 1)',
                     borderWidth: 1
                 }]
             }
         });
 
         // Gráfica 2
-        const ctx2 = document.getElementById('grafica2').getContext('2d');
+        const ctx2 = document.getElementById('chart2').getContext('2d');
         new Chart(ctx2, {
             type: 'line',
             data: {
-                labels: {{ grafica2.etiquetas|safe }},
+                labels: {{ labels2|safe }},
                 datasets: [{
-                    label: 'Datos de la Gráfica 2',
-                    data: {{ grafica2.datos|safe }},
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 2
+                    label: 'Gráfica 2',
+                    data: {{ data2|safe }},
+                    backgroundColor: 'rgba(12, 31, 255 , 0.2)',
+                    borderColor: 'rgba(28, 30, 63 , 1)',
+                    borderWidth: 1
                 }]
             }
         });
 
         // Gráfica 3
-        const ctx3 = document.getElementById('grafica3').getContext('2d');
+        const ctx3 = document.getElementById('chart3').getContext('2d');
         new Chart(ctx3, {
             type: 'pie',
             data: {
-                labels: {{ grafica3.etiquetas|safe }},
+                labels: {{ labels3|safe }},
                 datasets: [{
-                    label: 'Datos de la Gráfica 3',
-                    data: {{ grafica3.datos|safe }},
+                    label: 'Gráfica 3',
+                    data: {{ data3|safe }},
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)'
+                        'rgba(255, 0, 0, 0.2)',
+                        'rgba(12, 0, 255 , 0.2)',
+                        'rgba(0, 255, 19, 0.2)',
+                        'rgba(252, 66, 255, 0.2)'
                     ],
                     borderWidth: 1
+                }]
+            }
+        });
+
+        // Gráfica 4
+        const ctx4 = document.getElementById('chart4').getContext('2d');
+        new Chart(ctx4, {
+            type: 'radar',
+            data: {
+                labels: {{ labels4|safe }},
+                datasets: [{
+                    label: 'Gráfica 4',
+                    data: {{ data4|safe }},
+                    backgroundColor: 'rgba(216, 173, 249, 0.2 )',
+                    borderColor: 'rgba(0, 0, 0  )',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Gráfica 5
+        const ctx5 = document.getElementById('chart5').getContext('2d');
+        new Chart(ctx5, {
+            type: 'polarArea',
+            data: {
+                labels: {{ labels5|safe }},
+                datasets: [{
+                    label: 'Gráfica 5',
+                    data: {{ data5|safe }},
+                    backgroundColor: [
+                        'rgba(0, 255, 243 )',
+                        'rgba(13, 57, 184 )',
+                        'rgba(255, 106, 106 )',
+                        'rgba(255, 247, 0 )'
+                    ]
+                }]
+            }
+        });
+
+        // Gráfica 6
+        const ctx6 = document.getElementById('chart6').getContext('2d');
+        new Chart(ctx6, {
+            type: 'doughnut',
+            data: {
+                labels: {{ labels6|safe }},
+                datasets: [{
+                    label: 'Gráfica 6',
+                    data: {{ data6|safe }},
+                    backgroundColor: [
+                        'rgba(58, 255, 111)',
+                        'rgba(58, 81, 255)',
+                        'rgba(255, 58, 58)',
+                        'rgba(171, 58, 255)'
+                    ]
                 }]
             }
         });
